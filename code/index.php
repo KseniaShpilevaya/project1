@@ -1,4 +1,5 @@
 <?php
 $number = 15;
-echo $number;
+$number1 = 16;
+echo $number, '<br>', $number1;
 
