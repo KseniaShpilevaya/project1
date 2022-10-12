@@ -1,10 +1,4 @@
 <?php
-/* Imagine a lot of code here */
-$very_bad_unclear_name = "15 chicken wings";
+$number = 15;
+echo $number;
 
-// Write your code here:
-$order = & $very_bad_unclear_name;
-$order = "1 coca-cola and " . $order;
-
-// Don't change the line below
-echo "\nYour order is: $very_bad_unclear_name.";
