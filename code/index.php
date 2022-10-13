@@ -1,4 +1,4 @@
 <?php
-$number = 1.5;
-echo "$number";
+echo 12, '<br>';
+echo 6 + 6;
 
