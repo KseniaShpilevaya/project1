@@ -1,11 +1,17 @@
 <?php
-$a = 10;
-$b = 2;
+$st = pow(2, 10);
+echo $st, '<br>';
 
-if (($a % $b) == 0)
-    echo 'Делится, ', ($a / $b), '<br>';
-else
-    echo 'Делится с остатком, ', ($a % $b), '<br>';
+$sq = sqrt(245);
+echo $sq, '<br>';
+
+$arr = [4, 2, 5, 19, 0, 10];
+$sumQ = 0;
+foreach ($arr as &$value) {
+    $sumQ += pow($value, 2);
+}
+$end = sqrt($sumQ);
+echo $end;
 
 
 
