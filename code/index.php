@@ -1,13 +1,26 @@
 <?php
-$r = rand(1, 100);
-echo $r, '<br>';
+$a = 5;
+$b = 6;
+echo abs($a - $b), '<br>';
 
-$arr = [];
-for ($i = 1; $i <= 10; $i++) {
-    $arr[$i] = rand();
+$a = 7;
+$b = 6;
+echo abs($a - $b), '<br>';
+
+$a = -5;
+$b = 6;
+echo abs($a - $b), '<br>';
+
+$a = 5;
+$b = -6;
+echo abs($a - $b), '<br>';
+
+$a = -5;
+$b = -6;
+echo abs($a - $b), '<br>';
+
+$arr = [1, 2, -1, -2, 3, -3];
+foreach ($arr as &$value) {
+    $value = abs($value);
 }
 print_r ($arr);
-
-
-
-
