@@ -1,10 +1,12 @@
 <?php
-$arr = [4, -2, 5, 19, -130, 0, 10];
-print_r ($arr);
-echo ('<br>');
-echo min($arr), '<br>';
-echo max($arr);
+$r = rand(1, 100);
+echo $r, '<br>';
 
+$arr = [];
+for ($i = 1; $i <= 10; $i++) {
+    $arr[$i] = rand();
+}
+print_r ($arr);
 
 
 
