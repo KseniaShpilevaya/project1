@@ -1,26 +1,24 @@
 <?php
-$a = 5;
-$b = 6;
-echo abs($a - $b), '<br>';
+// первое задание
+$a = 3;
+$del = [];
 
-$a = 7;
-$b = 6;
-echo abs($a - $b), '<br>';
-
-$a = -5;
-$b = 6;
-echo abs($a - $b), '<br>';
-
-$a = 5;
-$b = -6;
-echo abs($a - $b), '<br>';
-
-$a = -5;
-$b = -6;
-echo abs($a - $b), '<br>';
-
-$arr = [1, 2, -1, -2, 3, -3];
-foreach ($arr as &$value) {
-    $value = abs($value);
+for ($i = 1; $i <= $a; $i++) {
+    if ($a % $i == 0)
+        array_push($del, $i);
 }
-print_r ($arr);
+
+print_r($del);
+echo '<br>';
+
+// второе задание
+$arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+$sum = 0;
+$i = 0;
+
+while ($sum <= 10) {
+    $sum += $arr[$i];
+    $i++;
+}
+echo $i;
