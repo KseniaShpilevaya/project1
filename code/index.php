@@ -1,20 +1,15 @@
-<?php
-
-$str = 'ahb acb aeb aeeb adcb axeb';
-$regexp = '/a..b/'; 
-$matches = []; 
-preg_match_all($regexp, $str, $matches);
-print_r($matches);
-
-echo '<br>';
-
-function cube($matches)
-	{
-		$result = pow($matches[0], 3); 
-		return $result;
-	}
-
-$str1 =  'a1b2c3';
-$regexp1 = '/[0-9]/'; 
-$str1 = preg_replace_callback($regexp1, 'cube', $str1);
-print_r($str1);
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hello</title>
+    </head>
+    <body>
+        <form action="save.php" method="GET">
+            <textarea name="text"></textarea>
+            <input type="submit">
+        </form>
+    </body>
+</html>
