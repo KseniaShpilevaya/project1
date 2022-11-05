@@ -1,9 +1,10 @@
 <?php
 session_start();
-if(!empty($_GET)) {
-    $_SESSION['surname'] = $_GET['surname'];
-    $_SESSION['name'] = $_GET['name'];
-    $_SESSION['age'] = $_GET['age'];
+if(!empty($_POST)) { 
+    $_SESSION['useruser'] = ['surname' => $_POST['surname'],
+    'name' => $_POST['name'],
+    'age' => $_POST['age'],
+    'salary' => $_POST['salary']];
 }
 ?>
 <!DOCTYPE html>
@@ -15,11 +16,19 @@ if(!empty($_GET)) {
         <title>Hello</title>
     </head>
     <body>
-        <form method="GET">
+        <form action="index.php" method="POST">
+            <label for="surname">Фамилия:</label>
             <input name="surname" required>
+            <label for="name">Имя:</label>
             <input name="name" required>
+            <label for="age">Возраст:</label>
             <input name="age" type="number" required>
+            <label for="salary">Зарплата:</label>
+            <input name="salary" type="number" required>
             <input type="submit">
+        </form>
+        <form action="save.php"> 
+            <input type="submit" value="Посмотреть список">
         </form>
     </body>
 </html>

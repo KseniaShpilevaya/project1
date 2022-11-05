@@ -1,9 +1,9 @@
 <?php
 session_start();
-if (!empty($_SESSION['surname'])) {
-    echo $_SESSION['surname'];
-    echo ' ';
-    echo $_SESSION['name'];
-    echo ' ';
-    echo $_SESSION['age'];
-}
+echo "<ul>";
+	if (!empty($_SESSION['useruser'])) {
+		foreach($_SESSION['useruser'] as &$userData) {
+            echo "<li>".$userData."</li>";
+        }
+	}
+echo "</ul>";
