@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!empty($_GET)) {
+    $_SESSION['surname'] = $_GET['surname'];
+    $_SESSION['name'] = $_GET['name'];
+    $_SESSION['age'] = $_GET['age'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,8 +15,10 @@
         <title>Hello</title>
     </head>
     <body>
-        <form action="save.php" method="GET">
-            <textarea name="text"></textarea>
+        <form method="GET">
+            <input name="surname" required>
+            <input name="name" required>
+            <input name="age" type="number" required>
             <input type="submit">
         </form>
     </body>
