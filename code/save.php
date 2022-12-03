@@ -15,15 +15,16 @@ $category = $_POST['category'];
 $title = $_POST['title'];
 $desc = $_POST['description'];
 
-$folderPath = "categories/{$category}/{$email}";
+$mysqli = new mysqli('db', 'root', 'helloworld', 'web');
 
-if (false === file_exists($folderPath)) {
-    mkdir("categories/{$category}/{$email}", 0777);
+if (mysqli_connect_errno()) {
+    printf('Can not connect to mysql server. Error code: %s', mysqli_connect_error());
+    exit;
 }
 
-$filePath = "categories/{$category}/{$email}/{$title}.txt";
+$query = "INSERT INTO ad (email, title, description, category) VALUES (?, ?, ?, ?)";
+$stmt = $mysqli->prepare($query);
+$stmt->bind_param("ssss", $email, $title, $desc, $category);
+$stmt->execute();
 
-if (false === file_put_contents($filePath, $desc)) {
-	throw new Exceprion("Something went wrong");
-}
 redirectToHome();

@@ -1,4 +1,18 @@
-<!DOCTYPE html>
+<?php
+$mysqli = new mysqli('db', 'root', 'helloworld', 'web');
+
+# проверяем подключение
+if (mysqli_connect_errno()) {
+    printf('Can not connect to mysql server. Error code: %s', mysqli_connect_error());
+    exit;
+}
+
+# запустила один раз, потому что категории не меняются
+# $mysqli->query('INSERT INTO categories (category) VALUES ("cars")');
+# $mysqli->query('INSERT INTO categories (category) VALUES ("other")');
+# $mysqli->query('INSERT INTO categories (category) VALUES ("tea")');
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,14 +30,12 @@
             <label for="category">Category</label>
             <select name="category" required>
             <?php
-                $folders = "categories";
-                $categories = scandir($folders);
-                foreach($categories as $category) {
-                    if (($category != '.') && ($category != "..")) {
-                        echo "<option value=".$category.'>'.$category."</option>";
-                    }
+            if ($result = $mysqli->query('SELECT * from categories')) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<option value=".$row['category'].'>'.$row['category']."</option>";
                 }
-                ?>
+            }
+            ?>
             </select>
             
             <label for="title">Title</label>
@@ -45,35 +57,16 @@
             </thead>
             <tbody>
                 <?php
-                    foreach($categories as $category) {
-                        if (($category === '.') || ($category === '..')) {
-                            continue;
-                        }
-                        $categoryPath = "categories/{$category}";
-                        $emailsInCategory = scandir($categoryPath);
-                        foreach($emailsInCategory as $email) {
-                            if (($email === '.') || ($email === '..')) {
-                                continue;
-                            }
-                            $emailFolder = "categories/{$category}/{$email}";
-                            $advertisements = scandir($emailFolder);
-                            foreach($advertisements as $adv) {
-                                if (($adv === '.') || ($adv === '..')) {
-                                    continue;
-                                }
-                                $advPath = "categories/{$category}/{$email}/{$adv}";
-                                $advFile = fopen($advPath, "r");
-                                $descr = file_get_contents($advPath);
-                                fclose($advFile);
-                                echo "<tr>";
-                                echo "<td>{$category}</td>";
-                                echo "<td>{$email}</td>";
-                                echo "<td>".substr($adv, 0, -4)."</td>";
-                                echo "<td>{$descr}</td>";
-                                echo "</tr>";
-                            }
-                        }
+                if ($result = $mysqli->query('SELECT * from ad')) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>{$row['category']}</td>";
+                        echo "<td>{$row['email']}</td>";
+                        echo "<td>{$row['title']}</td>";
+                        echo "<td>{$row['description']}</td>";
+                        echo "</tr>";
                     }
+                }
                 ?>
             </tbody>
         </table>
